@@ -7,12 +7,15 @@ function Front() {
   const [text, setText] = useState('');
   const [txt, setTxt] =useState('');
   const [ky,setKy]= useState('');
+  const [resultado, setResultado] = useState('');
 
   function handClick(){    
     setTxt(text);
     setKy(key);  
     setKey('');
     setText('');
+    setResultado(Encryptor(text, key));
+
   }
   
 
@@ -37,7 +40,7 @@ function Front() {
          */}
 
         <div className="container-short">
-          <label for="key">Llave</label>
+          <label htmlFor="key">Llave</label>
           <br />
           <input
             type="password"
@@ -47,7 +50,7 @@ function Front() {
         </div>
         <br />
         <div className="container-short">
-          <label for="text">Texto</label>
+          <label htmlFor="text">Texto</label>
           <br />
           <textarea
             type="text"
@@ -78,8 +81,8 @@ function Front() {
         <hr />
         <div className="text-result">
           <p>
-            <Encryptor valueText={txt} valueKey={ky}/>
-            <Decrypt />
+            {resultado}
+            
           </p>
           <hr />
           <br />
