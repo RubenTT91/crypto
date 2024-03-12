@@ -4,18 +4,18 @@ import Decrypt from "./decrypt";
 
 function Front() {
   const [key, setKey] = useState('');
-  const [text, setText] = useState('');
-  const [txt, setTxt] =useState('');
-  const [ky,setKy]= useState('');
+  const [text, setText] = useState('');  
   const [resultado, setResultado] = useState('');
 
-  function handClick(){    
-    setTxt(text);
-    setKy(key);  
-    setKey('');
-    setText('');
-    setResultado(Encryptor(text, key));
 
+  
+  function encriptar(){
+    setResultado(Encryptor(text, key));
+  }
+
+  function desencriptar(){    
+    setResultado(Decrypt(text, key));
+;
   }
   
 
@@ -68,8 +68,8 @@ function Front() {
          */}
 
         <div className="container-buttons">
-          <button onClick={handClick}>Encriptar</button>
-          <button>Desencriptar</button>
+          <button onClick={encriptar}>Encriptar</button>
+          <button onClick={desencriptar}>Desencriptar</button>
           <button>Limpiar</button>
         </div>
 
@@ -80,10 +80,7 @@ function Front() {
         <br />
         <hr />
         <div className="text-result">
-          <p>
-            {resultado}
-            
-          </p>
+          <p> {resultado}</p>
           <hr />
           <br />
         </div>
