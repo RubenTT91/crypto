@@ -43,7 +43,8 @@ function Front() {
           <label htmlFor="key">Llave</label>
           <br />
           <input
-            type="password"
+            type="text"
+            maxLength={4}
             onChange={(e) => setKey(e.target.value)}
             value={key}
           />

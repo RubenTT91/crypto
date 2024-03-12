@@ -1,34 +1,29 @@
 function Encryptor(valueText, valueKey) {
   let texto = valueText;
-  let llave = valueKey;
-  let newText=[];
-  let convertKey =0;
-  console.log(valueKey);
-  console.log(typeof(valueKey));
-  
+  let llave = Number(valueKey);
+  let newText = [];
+  let convertKey = 0;
 
+  for (let i = 0; i < valueKey.length; i++) {
+    convertKey += llave % 10;
+    llave = Math.floor(llave / 10);
+  }
 
-  for (let i =0; i < valueKey.length; i++) {
-      convertKey += llave%10;
-      llave = Math.floor(llave/10);      
-    }    
-    
+  for (let j = 0; j < texto.length; j++) {
+    let newCode;
 
-    for (let j = 0; j < texto.length; j++) {
-
-      let newCode;
-      if(j%2===0){
-         newCode = convertKey + Number(texto[j].codeCharAt(j));
-         newText[j] = String.fromCharCode(newCode);
-        }
-        else{
-          newCode = convertKey - Number(texto[j].codeCharAt(j));
-          newText[j] = String.fromCharCode(newCode);
-        }    
+    if (j % 2 === 0) {
+      newCode = convertKey + texto.charCodeAt(j);
+      newCode>126 ? newCode = 126 - newCode : newCode=newCode ;
+      newText[j] = String.fromCharCode(newCode);
+    } else {
+      newCode>126 ? newCode = 126 -newCode : newCode=newCode;
+      newCode = convertKey - Number(texto.charCodeAt(j));
+      newText[j] = String.fromCharCode(newCode);
     }
-    
-  return "Se ejecuto el encriptador";
+  }
 
+  return newText;
 }
 
 export default Encryptor;
