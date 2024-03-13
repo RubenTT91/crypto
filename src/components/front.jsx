@@ -10,14 +10,17 @@ function Front() {
 
   
   function encriptar(){
-    setResultado(Encryptor(text, key));
+    setResultado(Encryptor(text, key)); 
   }
 
   function desencriptar(){    
-    setResultado(Decrypt(text, key));
-;
+    setResultado(Decrypt(text, key)); 
   }
   
+  function clear(){
+    setKey('');
+    setText('');
+  }
 
 
 
@@ -71,7 +74,7 @@ function Front() {
         <div className="container-buttons">
           <button onClick={encriptar}>Encriptar</button>
           <button onClick={desencriptar}>Desencriptar</button>
-          <button>Limpiar</button>
+          <button onClick={clear}>Limpiar</button>
         </div>
 
         {/** Contenedor Resultado final
